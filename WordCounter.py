@@ -17,7 +17,7 @@ class WordCounter():
     def get_info(self):
         try:
             self.option, arg = getopt.getopt(sys.argv[1:],"scwlax")
-            print(self.option)
+            #print(self.option)
             for opt, args in self.option:
                 if opt in '-s':
                     #If the commend includes '-s',get all file with the special suffix.
@@ -30,11 +30,9 @@ class WordCounter():
                 if arg:
                     self.File_path.append(arg[0])
                     print(arg[0])
-                else:
-                    print("缺乏文件路径")
         except getopt.error as e:
             pass
-            #print(e)
+
         self.set_func(self.option)
 
 

@@ -4,7 +4,7 @@ import re
 def get_all_file(suffix):
     #To get the file's suffix
     suffixx = ('\\' + re.search('.[a-zA-Z]$',suffix).group())
-    print(suffixx)
+    #print(suffixx)
 
     path = os.getcwd()
     file_list = []
@@ -16,7 +16,7 @@ def get_all_file(suffix):
                 file_path = os.path.join(root, x)
                 file_list.append(file_path)
 
-    print(file_list)
+    #print(file_list)
     return file_list
 
 if __name__ == '__main__':

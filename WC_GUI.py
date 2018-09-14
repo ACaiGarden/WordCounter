@@ -8,15 +8,13 @@ class Window():
         self.path = ''
         self.func_list = []
         self.Initialization()
-        self.count()
+        #self.count()
 
     def Initialization(self):
         window = Tk()
-        self.file_path = StringVar()
 
-        #self.liss = []
+        self.file_path = StringVar()
         self.var_list = []
-        #self.liss.append('123')
 
         window.title('WordCounter')
         window.geometry('800x500')
@@ -27,9 +25,7 @@ class Window():
         self.tex = Text(window, heigh = 10)
         self.tex.grid(row = 6, column = 1)
 
-
         self.set_check(window)
-        #self.set_func(self.var_dict)
 
         Button(window, text='Count!', command=self.count).grid(row=5, column=1)
         window.mainloop()
@@ -47,7 +43,6 @@ class Window():
         word_var = IntVar()
         line_var = IntVar()
         special_var = IntVar()
-        #self.var_dict= {'line' : line_var,'word' : word_var,'font' : font_var,'special' : special_var}
 
         l1 = Label(window)
         l1.grid(row = 1, column = 0)
@@ -58,17 +53,6 @@ class Window():
         l4 = Label(window)
         l4.grid(row = 2, column = 1)
 
-        '''
-        def set_func():
-            if font_var.get() == 1:
-                self.func_list.append('get_font_num(file)')
-            if word_var.get() == 1:
-                self.func_list.append('get_word_num(file)')
-            if line_var.get() == 1:
-                self.func_list.append('get_line_num(file)')
-            if font_var.get() == 1:
-                self.func_list.append('get_font_num(file)')
-        '''
         def set_font():
             if font_var.get() == 1:
                 l1.config(text = 'font')
@@ -106,19 +90,6 @@ class Window():
                                  offvalue = 0,command = set_line).grid(row=4, column=0)
         check_special = Checkbutton(window, text="Special line num", variable = special_var, onvalue = 1,
                                  offvalue = 0,command = set_special).grid(row=4, column=1)
-
-
-    '''
-    def set_func(self, dict):
-        if dict['font'].get() == 1:
-            self.func_list.append('get_font_num(file)')
-        if dict['word'].get() == 1:
-            self.func_list.append('get_word_num(file)')
-        if dict['line'].get() == 1:
-            self.func_list.append('get_line_num(file)')
-        if dict['special'].get() == 1:
-            self.func_list.append('Expansion_a.get_special_num(file)')
-    '''
 
     def count(self):
         file = self.path

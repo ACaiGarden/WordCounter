@@ -10,7 +10,7 @@ def get_line_num(file, aim = None):
         if aim:
             aim.insert('insert', strl)
     except:
-        print("打开文件失败")
+        print("Open false")
 
 
 def get_word_num(file, aim = None):
@@ -27,7 +27,7 @@ def get_word_num(file, aim = None):
         if aim:
             aim.insert('insert', strw)
     except:
-        print("打开文件失败")
+        print("Open false")
 
 
 def get_font_num(file, aim = None):
@@ -47,4 +47,4 @@ def get_font_num(file, aim = None):
             aim.insert('insert', strf1)
             aim.insert('insert', strf2)
     except:
-        print("打开文件失败")
+        print("Open false")
