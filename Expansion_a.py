@@ -1,11 +1,11 @@
 import re
 
-def get_special_num(file):
-    get_empty_line(file)
-    get_annotate_line(file)
-    get_code_line(file)
+def get_special_num(file, aim = None):
+    get_empty_line(file, aim)
+    get_annotate_line(file, aim)
+    get_code_line(file, aim)
 
-def get_empty_line(file):
+def get_empty_line(file, aim = None):
     empty_line = 0
     try:
         with open(file) as f:
@@ -14,10 +14,13 @@ def get_empty_line(file):
                     empty_line += 1
     except:
         pass
+    stre = ('empty:',empty_line, '\n')
     print('empty:',empty_line)
+    if aim:
+        aim.insert('insert', stre)
     return empty_line
 
-def get_code_line(file):
+def get_code_line(file, aim = None):
     code_line = 0
     try:
         with open(file) as f:
@@ -26,11 +29,14 @@ def get_code_line(file):
                     code_line += 1
     except:
         pass
-    code_line -= get_block_annotate_line(file)
-    print('code:',code_line)
+    code_line -= get_block_annotate_line(file, aim = None)
+    strc = ('code:',code_line ,'\n')
+    print('code:',code_line )
+    if aim:
+        aim.insert('insert', strc)
     return code_line
 
-def get_annotate_line(file):
+def get_annotate_line(file, aim = None):
     annotate_line = 0
     try:
         with open(file) as f:
@@ -54,10 +60,13 @@ def get_annotate_line(file):
 
     except:
         pass
+    stra = ('annotate:',annotate_line,'\n')
     print('annotate:',annotate_line)
+    if aim:
+        aim.insert('insert', stra)
     return annotate_line
 
-def get_block_annotate_line(file):
+def get_block_annotate_line(file, aim = None):
     block_annotate_line = 0
 
     with open(file) as f:

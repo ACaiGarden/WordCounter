@@ -2,6 +2,9 @@ import sys,getopt
 import re
 import Expansion_s
 import Expansion_a
+from Base_Function import *
+import WC_GUI
+
 
 class WordCounter():
     def __init__(self):
@@ -13,12 +16,12 @@ class WordCounter():
 
     def get_info(self):
         try:
-            self.option, arg = getopt.getopt(sys.argv[1:],"scwla")
+            self.option, arg = getopt.getopt(sys.argv[1:],"scwlax")
             print(self.option)
             for opt, args in self.option:
                 if opt in '-s':
                     #If the commend includes '-s',get all file with the special suffix.
-                    print('Get all file.')
+                    #print('Get all file.')
                     self.File_path = Expansion_s.get_all_file(arg[0])
                     break
 
@@ -37,14 +40,17 @@ class WordCounter():
 
     def set_func(self, option):
         for opt, arg in option:
+            if opt in ('-x'):
+                w = WC_GUI.Window()
+                break
             if opt in ('-s'):
                 pass
             if opt in ('-c'):
-                self.func_list.append('self.get_font_num(file)')
+                self.func_list.append('get_font_num(file)')
             if opt in ('-w'):
-                self.func_list.append('self.get_word_num(file)')
+                self.func_list.append('get_word_num(file)')
             if opt in ('-l'):
-                self.func_list.append('self.get_line_num(file)')
+                self.func_list.append('get_line_num(file)')
             if opt in ('-a'):
                 self.func_list.append('Expansion_a.get_special_num(file)')
 
@@ -55,6 +61,7 @@ class WordCounter():
             for func in self.func_list:
                 exec(func)
 
+'''
     def get_line_num(self, file):
         try:
             #print(file)
@@ -92,6 +99,7 @@ class WordCounter():
             print("Font Number(No space):", font_num2)
         except:
             print("打开文件失败")
+'''
 
 if __name__ == '__main__':
     Myclass = WordCounter()
